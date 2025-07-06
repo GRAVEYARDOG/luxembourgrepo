@@ -2,25 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, viewport-fit=cover" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+  <meta
+    name="viewport"
+    content="width=device-width, height=device-height, initial-scale=1.0, viewport-fit=cover"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
   <title>Luxembourg Embassy</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
 
+  <style>
+    /* Reset & base */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
-      height: 100%; 
+      height: 100%;
       font-family: 'Poppins', sans-serif;
-      overflow: auto; /* Allow scrolling! */
+      overflow: auto;
     }
 
+    /* Slides container */
     .slides {
       scroll-snap-type: y mandatory;
       overflow-y: scroll;
-      height: 100svh; /* Dynamic viewport height fix for mobile */
+      height: 100svh;
     }
 
+    /* Generic slide */
     .slide {
       scroll-snap-align: start;
       min-height: 100svh;
@@ -31,15 +39,16 @@
       align-items: center;
     }
 
-    /* Hero Slide */
-    .slide--video {
+    /* Hero slide – image background */
+    .slide--image {
       position: relative;
-      color: white;
+      overflow: hidden;
       text-align: center;
+      color: white;
     }
-    
 
-    .slide--video video {
+    /* Full-bleed absolute image */
+    .slide--image .hero-image {
       position: absolute;
       top: 0; left: 0;
       width: 100%;
@@ -48,18 +57,21 @@
       z-index: -1;
     }
 
-    .slide--video .content {
+    /* Content above the image */
+    .slide--image .content {
       position: relative;
       z-index: 1;
+      padding: 1rem;
     }
 
-    .slide--video h1 {
+    /* Headline & link styles */
+    .slide--image h1 {
       font-size: 2.4rem;
       font-weight: 300;
       margin-bottom: 1rem;
     }
 
-    .slide--video a {
+    .slide--image a {
       display: inline-block;
       padding: 0.6rem 1.4rem;
       border: 2px solid #fff;
@@ -68,12 +80,11 @@
       text-decoration: none;
       font-weight: bold;
     }
-    
 
+    /* Skip button */
     .skip-btn {
       position: absolute;
-      top: 1rem;
-      right: 1rem;
+      top: 1rem; right: 1rem;
       z-index: 2;
       background: rgba(0,0,0,0.5);
       color: white;
@@ -82,6 +93,7 @@
       border: none;
       cursor: pointer;
     }
+
 
     /* Stats Slide */
     .slide--stats {
@@ -193,12 +205,19 @@
 
 <div class="slides">
   <!-- Hero -->
-<section class="slide slide--video">
-  <video autoplay muted loop playsinline>
-    <source src="media/video.mp4" type="video/mp4">
-  </video>
-  <button class="skip-btn" onclick="location.href='#stats'">Skip ↓</button>
-  
+  <section class="slide slide--image">
+    <img
+      src="media/hero.png"
+      alt="A descriptive caption of the hero image"
+      class="hero-image"
+    >
+    <button
+      class="skip-btn"
+      onclick="location.href='#stats'"
+    >
+      Skip ↓
+    </button>
+
   <!-- Add logo here -->
   <div class="content">
     <img src="media/logo (4).jpg" alt="Luxembourg Embassy Logo" style="width: 250px; margin-bottom: 250px;" />
